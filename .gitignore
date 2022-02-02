@@ -4,4 +4,4 @@
 *.png
 *.pdf
 *.jpeg
-
+*__pycache__*
