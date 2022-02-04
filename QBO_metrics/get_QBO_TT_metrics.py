@@ -2,20 +2,20 @@
 import numpy as np
 import netCDF4 as nc
 from scipy.ndimage import uniform_filter1d
+from clim_functions.smoothing import smooth
 
-def get_QBO_TT(u_mean10, return_variance=False, return_amplitude=False, return_cov=False):
+def get_QBO_TT(u_zonal, return_variance=False, return_amplitude=False, return_cov=False):
     """ Function that returns QBO period using Transition Time (TT) method 
-    Inputs: u_mean10 (np array) zonal mean zonal wind at 10hPa (MiMA index 13) 
+    Inputs: u_zonal (np array) zonal mean zonal wind at given height level, recommended 10hPa (MiMA index 13) 
     Outputs: period (flt) mean period in years 
              amplitude (flt)  absolute max. u within each QBO cycle"""
     # Smooth with five-month centered running mean
-    n_days = 5*30     # 5 month
-    u_smoothed = uniform_filter1d(u_mean10, n_days)
+    u_smoothed = smooth(u_zonal)
 
     # Identify zero wind transitions from westward to eastward (i.e. -ve to +ve)
     # Note, we start in the +ve phase, so calculate no of QBOs from then
     new_QBO_cycle = []
-    t = range(len(u_mean10))
+    t = range(len(u_zonal))
     # Go through time series and save each transition
     for it in t[1:]:
         if (u_smoothed[it] >=0 and u_smoothed[it-1] <= 0):

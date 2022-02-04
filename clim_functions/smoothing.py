@@ -13,5 +13,5 @@ def lp_filter(u, n_months=4):
 def smooth(u, n_months=5):
     """ Smooth with five-month centered running mean """
     n_days = n_months*30     # default 5 month
-    u_smoothed = uniform_filter1d(u, n_days)
+    u_smoothed = uniform_filter1d(u, n_days, axis=0)
     return u_smoothed
