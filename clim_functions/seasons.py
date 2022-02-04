@@ -1,5 +1,7 @@
 import numpy as np
 
+months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+
 def get_seasonal_inds(n_days):
     """ Returns 4 lists of indicies for DJF, MAM, JJA and SON to allow quick sub-selection
     over variables for each season. Assumes time series starts in Jan"""
@@ -13,3 +15,5 @@ def get_seasonal_inds(n_days):
     SON_inds = [i for i in range(n_days) if i%360 in SON]
     
     return DJF_inds, MAM_inds, JJA_inds, SON_inds
+
+
