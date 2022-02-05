@@ -16,7 +16,7 @@ def deseasonalize(variable, time):
         inds_month_i =  np.isin( time%360 , month_i )
         # Get variable data for this month
         variable_month = variable[inds_month_i]
-        variable_month_mean = np.mean(variable_month)
+        variable_month_mean = np.mean(variable_month, axis=0)
         # Deseasonalize 
         variable_deseasonalized[inds_month_i] = variable_month - variable_month_mean
     return variable_deseasonalized
