@@ -8,9 +8,7 @@ import netCDF4 as nc
 import numpy as np
 import matplotlib.pyplot as plt
 
-from plot_functions.plot_ubar_seasonal import plot_ubar_seasonal
-from plot_functions.plot_ubar_annual import plot_ubar_annual
-from plot_functions.plot_ubar_daily import plot_ubar_daily
+from plot_functions.plot_ubar import plot_ubar_seasonal , plot_ubar_annual, plot_ubar_daily
 from plot_functions.make_gif import make_gif
 
 # Select run to plot
